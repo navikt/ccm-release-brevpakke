@@ -11,6 +11,9 @@ on:
           - foreldrepenger-brevpakke
           - gosys-brevpakke
           - melosys-brevpakke
+          - pesys01-brevpakke
+          - foersteside-brevpakke
+          - veiledningarbeid-brevpakke
           
 jobs:
   deploy:
