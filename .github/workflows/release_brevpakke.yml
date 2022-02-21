@@ -45,9 +45,12 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           
       - name: maven release
-        run: mvn release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.releaseVersion }}
+        run: |
+            mvn release:prepare release:perform
+            -DreleaseVersion=${{ github.event.inputs.releaseVersion }}
+            -Dusername=${{ github.actor }}
+            -Dpassword=${{ secrets.PAT }}
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-          GITHUB_ACTOR: ${{ github.actor }}                 
+          GITHUB_TOKEN: ${{ secrets.PAT }}       
