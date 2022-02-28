@@ -1,4 +1,3 @@
-name: deploy brevpakke
 on:
   workflow_dispatch:
       inputs:        
@@ -14,7 +13,9 @@ on:
           - pesys01-brevpakke
           - foersteside-brevpakke
           - veiledningarbeid-brevpakke
-        
+          
+# Job name
+name: deploy ${{ github.event.inputs.brevpakke }}
           
 jobs:
   deploy:
