@@ -40,7 +40,11 @@ jobs:
           overwrite-settings: false # dont overwrite the settings.xml that lives on the runner
           
       - name: testing pat 
-        run: "export GITHUB_TOKEN=${{ secrets.PAT }}"
+        run: |
+          touch ~/temp/test
+          echo "$TEST_KEY" > ~/temp/test
+        env:
+          TEST_KEY: ${{ secrets.PAT }}
           
       - name: Config git author for tags created by mvn release:prepare.
         run: | 
