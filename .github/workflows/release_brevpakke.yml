@@ -53,4 +53,7 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          GITHUB_TOKEN: ${{ secrets.PAT }}       
+          GITHUB_TOKEN: ${{ secrets.PAT }}    
+          
+      - name: testing pat 
+        run: "export GITHUB_TOKEN=${{ secrets.PAT }}"
