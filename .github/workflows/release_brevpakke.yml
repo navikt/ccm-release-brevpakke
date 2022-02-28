@@ -41,9 +41,9 @@ jobs:
           
       - name: maven release
         run: |
-            mvn release:prepare release:perform
-            -Dusername=${{ github.actor }}
-            -Dpassword=${{ secrets.PAT }}
+            mvn release:prepare release:perform \
+            -Dusername=${{ github.actor }} \
+            -Dpassword=${{ secrets.PAT }} \
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
