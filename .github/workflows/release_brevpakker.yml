@@ -42,7 +42,7 @@ jobs:
           
       - name: maven release
         run: |
-            mvn release:prepare release:perform \
+            mvn -B release:clean release:prepare release:perform \
             -Dusername=${{ github.actor }} \
             -Dpassword=${{ secrets.PAT }} \
         env:
