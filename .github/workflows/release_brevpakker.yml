@@ -14,6 +14,7 @@ on:
           - pesys01-brevpakke
           - foersteside-brevpakke
           - veiledningarbeid-brevpakke
+          - jonas-test
 
 jobs:
   deploy:
