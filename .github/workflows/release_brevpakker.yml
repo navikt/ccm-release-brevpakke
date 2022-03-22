@@ -14,16 +14,14 @@ on:
           - pesys01-brevpakke
           - foersteside-brevpakke
           - veiledningarbeid-brevpakke
-          
 
-          
 jobs:
   deploy:
     runs-on: [self-hosted]
     
     steps:
       - name: Check out private repo # Your user needs access to this repo ( will use your PAT )
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: navikt/${{ github.event.inputs.brevpakke }}
           token: ${{ secrets.PAT }}
@@ -37,7 +35,7 @@ jobs:
           
       - name: Config git author for tags created by mvn release:prepare.
         run: | 
-          git config user.name "$GITHUB_ACTOR"
+          git config user.name "ACTIONS-RUNNER"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           
       - name: maven release
