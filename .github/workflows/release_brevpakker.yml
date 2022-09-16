@@ -7,15 +7,10 @@ on:
           required: true
           description: Hvilken brevpakke skal releases?
           options: 
-          - arena-brevpakke
-          - foreldrepenger-brevpakke
-          - gosys-brevpakke
-          - melosys-brevpakke
           - pesys01-brevpakke
-          - foersteside-brevpakke
-          - veiledningarbeid-brevpakke
-          - jonas-test
-
+        version:
+          required: true
+          description: Hvilken branch skal bygges?
 jobs:
   deploy:
     runs-on: [self-hosted]
@@ -26,6 +21,7 @@ jobs:
         with:
           repository: navikt/${{ github.event.inputs.brevpakke }}
           token: ${{ secrets.PAT }}
+          ref: ${{ github.event.inputs.version }}
           
       - name: Set up Java
         uses: actions/setup-java@v2
