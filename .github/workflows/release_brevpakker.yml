@@ -8,12 +8,12 @@ on:
           description: Hvilken brevpakke skal releases?
           options: 
           - arena-brevpakke
-          - foreldrepenger-brevpakke
+          - ur-brevpakke
           - gosys-brevpakke
           - melosys-brevpakke
           - pesys01-brevpakke
           - foersteside-brevpakke
-          - veiledningarbeid-brevpakke
+          - ray-brevpakke
           - jonas-test
 
 jobs:
