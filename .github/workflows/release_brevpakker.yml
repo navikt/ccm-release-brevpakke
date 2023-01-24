@@ -14,6 +14,7 @@ on:
           - pesys01-brevpakke
           - foersteside-brevpakke
           - ray-brevpakke
+          - infotrygd-brevpakke
           - jonas-test
 
 jobs:
