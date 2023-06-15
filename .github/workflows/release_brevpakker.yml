@@ -16,6 +16,7 @@ on:
           - ray-brevpakke
           - infotrygd-brevpakke
           - jonas-test
+          
 
 jobs:
   deploy:
@@ -25,7 +26,7 @@ jobs:
       - name: Check out private repo # Your user needs access to this repo ( will use your PAT )
         uses: actions/checkout@v2
         with:
-          repository: navikt/${{ github.event.inputs.brevpakke }}
+          repository: Jonas-Juvet/melosys-brevpakke-fork
           token: ${{ secrets.PAT }}
           
       - name: Set up Java
