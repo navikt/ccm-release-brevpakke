@@ -11,7 +11,7 @@ jobs:
       - name: Check out private repo # Your user needs access to this repo ( will use your PAT )
         uses: actions/checkout@v2
         with:
-          repository: Jonas-Juvet/melosys-brevpakke-fork
+          repository: Jonas-Juvet/melosys-brevpakke-fork@master
           token: ${{ secrets.PAT_JONAS }}
           
       - name: Set up Java
