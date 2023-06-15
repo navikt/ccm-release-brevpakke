@@ -1,21 +1,6 @@
 name: release brevpakke
 on:
   workflow_dispatch:
-      inputs:        
-        brevpakke:
-          type: choice
-          required: true
-          description: Hvilken brevpakke skal releases?
-          options: 
-          - arena-brevpakke
-          - ur-brevpakke
-          - gosys-brevpakke
-          - melosys-brevpakke
-          - pesys01-brevpakke
-          - foersteside-brevpakke
-          - ray-brevpakke
-          - infotrygd-brevpakke
-          - jonas-test
           
 
 jobs:
@@ -27,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Jonas-Juvet/melosys-brevpakke-fork
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT-jonas }}
           
       - name: Set up Java
         uses: actions/setup-java@v2
@@ -45,8 +30,8 @@ jobs:
         run: |
             mvn -B release:clean release:prepare release:perform \
             -Dusername=${{ github.actor }} \
-            -Dpassword=${{ secrets.PAT }} \
+            -Dpassword=${{ secrets.PAT-jonas }} \
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          GITHUB_TOKEN: ${{ secrets.PAT }}    
+          GITHUB_TOKEN: ${{ secrets.PAT-jonas }}    
