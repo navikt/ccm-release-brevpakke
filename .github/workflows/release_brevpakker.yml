@@ -15,7 +15,7 @@ on:
           - foersteside-brevpakke
           - ray-brevpakke
           - infotrygd-brevpakke
-          - jonas-test
+          - brevpakke-deployer
 
 jobs:
   deploy:
