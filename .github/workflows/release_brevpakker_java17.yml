@@ -7,7 +7,8 @@ on:
           required: true
           description: Hvilken brevpakke skal releases?
           options:
-          - brevpakke-deployer
+            - infotrygd-brevpakke
+            - brevpakke-deployer
 
 run-name: Release av ${{ inputs.brevpakke }}
 
