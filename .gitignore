@@ -1,0 +1,5 @@
+#IntelliJ
+*.iml
+*.iws
+*.idea
+atlassian-ide-plugin.xml
