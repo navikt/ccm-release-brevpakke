@@ -28,7 +28,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v4.4.0
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: '17'
           overwrite-settings: false # dont overwrite the settings.xml that lives on the runner
           
