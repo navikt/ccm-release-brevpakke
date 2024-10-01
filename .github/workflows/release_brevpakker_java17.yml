@@ -1,0 +1,46 @@
+name: Release brevpakke java 17
+on:
+  workflow_dispatch:
+      inputs:        
+        brevpakke:
+          type: choice
+          required: true
+          description: Hvilken brevpakke skal releases?
+          options:
+          - brevpakke-deployer
+
+jobs:
+  deploy:
+    runs-on: [self-hosted] 
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Check out private repo # Your user needs access to this repo ( will use your PAT )
+        uses: actions/checkout@v4.2.0
+        with:
+          repository: navikt/${{ github.event.inputs.brevpakke }}
+          token: ${{ secrets.PAT }}
+          
+      - name: Set up Java
+        uses: actions/setup-java@v4.4.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          overwrite-settings: false # dont overwrite the settings.xml that lives on the runner
+          
+      - name: Config git author for tags created by mvn release:prepare.
+        run: | 
+          git config user.name "ACTIONS-RUNNER"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          
+      - name: maven release
+        run: |
+            mvn -B release:clean release:prepare release:perform \
+            -Dusername=${{ github.actor }} \
+            -Dpassword=${{ secrets.PAT }} \
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}   
