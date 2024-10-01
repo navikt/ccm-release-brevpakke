@@ -9,6 +9,8 @@ on:
           options:
           - brevpakke-deployer
 
+run-name: Release av ${{ inputs.brevpakke }}
+
 jobs:
   deploy:
     runs-on: [self-hosted] 
