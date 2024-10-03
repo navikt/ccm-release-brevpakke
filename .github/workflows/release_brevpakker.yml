@@ -13,7 +13,6 @@ on:
           - melosys-brevpakke
           - pesys01-brevpakke
           - foersteside-brevpakke
-          - ray-brevpakke
           - brevpakke-deployer
 
 jobs:

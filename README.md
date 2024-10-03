@@ -10,3 +10,8 @@ Brevpakker:
 * [pesys01-brevpakke](https://github.com/navikt/pesys01-brevpakke)
 * [melosys-brevpakke](https://github.com/navikt/melosys-brevpakke)
 * [ur-brevpakke](https://github.com/navikt/ur-brevpakke )
+* [gosys-brevpakke](https://github.com/navikt/gosys-brevpakke)
+
+## Støtte
+
+Snakk med oss i [#team-ccm](https://nav-it.slack.com/archives/CHA0TE39C)
