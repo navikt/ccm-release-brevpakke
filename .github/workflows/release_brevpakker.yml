@@ -8,7 +8,6 @@ on:
           description: Hvilken brevpakke skal releases?
           options: 
           - arena-brevpakke
-          - melosys-brevpakke
           - pesys01-brevpakke
           - foersteside-brevpakke
           - brevpakke-deployer
