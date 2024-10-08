@@ -21,7 +21,7 @@ jobs:
     
     steps:
       - name: Check out private repo # Your user needs access to this repo ( will use your PAT )
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
         with:
           repository: navikt/${{ github.event.inputs.brevpakke }}
           token: ${{ secrets.PAT }}
