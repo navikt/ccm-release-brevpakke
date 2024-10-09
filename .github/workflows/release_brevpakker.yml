@@ -6,11 +6,8 @@ on:
           type: choice
           required: true
           description: Hvilken brevpakke skal releases?
-          options: 
-          - arena-brevpakke
+          options:
           - pesys01-brevpakke
-          - foersteside-brevpakke
-          - brevpakke-deployer
 
 jobs:
   deploy:

@@ -7,18 +7,20 @@ on:
           required: true
           description: Hvilken brevpakke skal releases?
           options:
+            - arena-brevpakke
             - melosys-brevpakke
             - infotrygd-brevpakke
             - gosys-brevpakke
             - ray-brevpakke
             - ur-brevpakke
+            - foersteside-brevpakke
             - brevpakke-deployer
 
 run-name: Release av ${{ inputs.brevpakke }}
 
 jobs:
   deploy:
-    runs-on: [self-hosted] 
+    runs-on: [self-hosted]
     permissions:
       contents: read
       packages: write
