@@ -14,6 +14,7 @@ on:
             - ray-brevpakke
             - ur-brevpakke
             - foersteside-brevpakke
+            - pesys01-brevpakke
             - brevpakke-deployer
 
 run-name: Release av ${{ inputs.brevpakke }}
