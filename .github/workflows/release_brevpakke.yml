@@ -16,6 +16,10 @@ on:
           - foersteside-brevpakke
           - pesys01-brevpakke
           - brevpakke-deployer
+      branch:
+        required: false
+        default: master
+        description: Hvilken branch skal bygges?
 
 run-name: Release av ${{ inputs.brevpakke }}
 
@@ -32,6 +36,7 @@ jobs:
         with:
           repository: navikt/${{ github.event.inputs.brevpakke }}
           token: ${{ secrets.PAT }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up Java
         uses: actions/setup-java@v4.4.0
