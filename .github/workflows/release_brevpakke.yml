@@ -25,7 +25,7 @@ run-name: Release av ${{ inputs.brevpakke }}
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
@@ -43,7 +43,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
-          overwrite-settings: false # dont overwrite the settings.xml that lives on the runner
 
       - name: Config git author for tags created by mvn release:prepare.
         run: |
