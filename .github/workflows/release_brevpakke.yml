@@ -21,7 +21,7 @@ on:
         default: master
         description: Hvilken branch skal bygges?
 
-run-name: Release av ${{ inputs.brevpakke }}
+run-name: Release av ${{ inputs.brevpakke }} (${{ inputs.branch }})
 
 jobs:
   deploy:
