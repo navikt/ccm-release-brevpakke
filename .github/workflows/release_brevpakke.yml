@@ -75,12 +75,6 @@ jobs:
           echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
           echo "new_version=${new_version}" >> $GITHUB_OUTPUT
 
-      - name: Set and push Git tag
-        run: |
-          new_tag="${{ steps.create_tag_and_version.outputs.new_tag }}"
-          git tag -a ${new_tag} -m "Release version ${new_tag}"
-          git push origin "${new_tag}"
-
       - name: Set maven artifact version
         run: |
           mvn versions:set -DnewVersion=${{ steps.create_tag_and_version.outputs.new_version }}
@@ -88,3 +82,9 @@ jobs:
 
       - name: Publish package to Github
         run: mvn -B --settings settings.xml deploy
+
+      - name: Set and push Git tag
+        run: |
+          new_tag="${{ steps.create_tag_and_version.outputs.new_tag }}"
+          git tag -a ${new_tag} -m "Release version ${new_tag}"
+          git push origin "${new_tag}"
