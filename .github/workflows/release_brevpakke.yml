@@ -37,6 +37,19 @@ jobs:
           repository: navikt/${{ github.event.inputs.brevpakke }}
           token: ${{ secrets.PAT }}
           ref: ${{ github.event.inputs.branch }}
+          # checkout gir shallow copy - fetch-depth: 0 vil tilgjengeliggjøre tags
+          fetch-depth: 0
+
+      - name: Create m2-settings
+        uses: whelk-io/maven-settings-xml-action@9dc09b23833fa9aa7f27b63db287951856f3433d # v22
+        with:
+          repositories: '[
+            { "id": "github", "url": "https://maven.pkg.github.com/navikt/maven-release", "releases": { "enabled": "true" }, "snapshots": { "enabled": "false" } }
+          ]'
+          servers: '[
+            { "id": "github", "username": "x-access-token", "password": "${{ secrets.PAT }}" }
+          ]'
+          output_file: settings.xml
 
       - name: Set up Java
         uses: actions/setup-java@v4.5.0
@@ -44,17 +57,34 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Config git author for tags created by mvn release:prepare.
+      - name: Set Git config
         run: |
           git config user.name "ACTIONS-RUNNER"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: maven release
+      - name: Create tag and version
+        id: create_tag_and_version
         run: |
-          mvn -B release:clean release:prepare release:perform \
-          -Dusername=${{ github.actor }} \
-          -Dpassword=${{ secrets.PAT }} \
-        env:
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          artifact_id=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          current_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          IFS='-' read -r current_artifact current_version <<< "$current_tag"
+          IFS='.' read -r major minor patch <<< "$current_version"
+          new_version="$major.$minor.$((patch + 1))"
+          new_tag="${artifact_id}-${new_version}"
+          echo "Creating new tag: ${new_tag}"
+          echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
+          echo "new_version=${new_version}" >> $GITHUB_OUTPUT
+
+      - name: Set and push Git tag
+        run: |
+          new_tag="${{ steps.create_tag_and_version.outputs.new_tag }}"
+          git tag -a ${new_tag} -m "Release version ${new_tag}"
+          git push origin "${new_tag}"
+
+      - name: Set maven artifact version
+        run: |
+          mvn versions:set -DnewVersion=${{ steps.create_tag_and_version.outputs.new_version }}
+          mvn versions:commit
+
+      - name: Publish package to Github
+        run: mvn -B --settings settings.xml deploy
