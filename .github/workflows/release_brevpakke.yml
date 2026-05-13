@@ -14,7 +14,6 @@ on:
           - ray-brevpakke
           - ur-brevpakke
           - foersteside-brevpakke
-          - pesys01-brevpakke
           - brevpakke-deployer
       branch:
         required: false
