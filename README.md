@@ -1,6 +1,8 @@
 # CCM - Release brevpakke
 
-Repoet benyttes til å release nye versjoner av brevpakker.
+Repoet benyttes til å release
+- nye versjoner av brevpakker
+- test-avhengigheten `brevpakke-deployer` brukt i brevpakkene for å validere at brevpakke-metadata er konsistent med Metaforce MFL-filen.
 
 Brevpakker:
 * [arena-brevpakke](https://github.com/navikt/arena-brevpakke)
@@ -10,6 +12,9 @@ Brevpakker:
 * [melosys-brevpakke](https://github.com/navikt/melosys-brevpakke)
 * [ur-brevpakke](https://github.com/navikt/ur-brevpakke)
 * [gosys-brevpakke](https://github.com/navikt/gosys-brevpakke)
+
+Test-avhengighet brukt av brevpakkene:
+* [brevpakke-deployer](https://github.com/navikt/brevpakke-deployer)
 
 ## Støtte
 
