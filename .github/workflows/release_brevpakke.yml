@@ -14,7 +14,7 @@ on:
           - ray-brevpakke
           - ur-brevpakke
           - foersteside-brevpakke
-          - brevpakke-deployer
+          - brevpakke-tester
       branch:
         required: false
         default: master
