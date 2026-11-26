@@ -2,7 +2,7 @@
 
 Repoet benyttes til å release
 - nye versjoner av brevpakker
-- test-avhengigheten `brevpakke-deployer` brukt i brevpakkene for å validere at brevpakke-metadata er konsistent med Metaforce MFL-filen.
+- test-avhengigheten `brevpakke-tester` brukt i brevpakkene for å validere at brevpakke-metadata er konsistent med Metaforce MFL-filen.
 
 Brevpakker:
 * [arena-brevpakke](https://github.com/navikt/arena-brevpakke)
@@ -14,7 +14,7 @@ Brevpakker:
 * [gosys-brevpakke](https://github.com/navikt/gosys-brevpakke)
 
 Test-avhengighet brukt av brevpakkene:
-* [brevpakke-deployer](https://github.com/navikt/brevpakke-deployer)
+* [brevpakke-tester](https://github.com/navikt/brevpakke-tester)
 
 ## Støtte
 
